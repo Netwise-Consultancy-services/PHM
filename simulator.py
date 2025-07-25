@@ -493,17 +493,33 @@ class LifeExpectancySimulator:
 
 # Initialize the simulator
 @st.cache_data
+import streamlit as st
+
 def load_simulator():
     simulator = LifeExpectancySimulator()
     
-    # Try to load the specified CSV file
-    file_path = r"merged_community_area_data - Copy.csv"    
+    # In Streamlit Cloud, files are typically in the same directory
+    file_path = "merged_community_area_data - Copy.csv"
+    
+    # Check if file exists
+    import os
+    if not os.path.exists(file_path):
+        st.error(f"CSV file not found: {file_path}")
+        st.write("Available files:")
+        try:
+            files = [f for f in os.listdir('.') if f.endswith('.csv')]
+            for f in files:
+                st.write(f"- {f}")
+        except:
+            st.write("Could not list files")
+        return None, 0, 0
+    
+    # Try to load the CSV file
     if simulator.load_data(file_path):
         if simulator.preprocess_data():
             success, r2, rmse = simulator.train_model()
             return simulator, r2, rmse
     
-    # If loading fails, show error and return None
     st.error("Failed to load and process the data. Please check the file path and data format.")
     return None, 0, 0
 
