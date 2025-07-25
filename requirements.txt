@@ -7,3 +7,5 @@ folium
 branca
 scikit-learn
 python-docx
+scikit-learn
+plotly
