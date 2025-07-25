@@ -226,7 +226,7 @@ class LifeExpectancySimulator:
     def load_data(self, file_path):
         """Load and preprocess the dataset"""
         try:
-            if os.path.exists("C:/Users/Meet.Golakiya/Desktop/merged_community_area_data - Copy.csv"):
+            if os.path.exists("merged_community_area_data - Copy.csv"):
                 self.data = pd.read_csv(file_path)
                 # Remove the success message
                 return True
