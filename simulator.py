@@ -493,7 +493,6 @@ class LifeExpectancySimulator:
 
 # Initialize the simulator
 @st.cache_data
-import streamlit as st
 
 def load_simulator():
     simulator = LifeExpectancySimulator()
