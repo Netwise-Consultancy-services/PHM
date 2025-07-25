@@ -497,7 +497,7 @@ def load_simulator():
     simulator = LifeExpectancySimulator()
     
     # Try to load the specified CSV file
-    file_path = r"C:/Users/Meet.Golakiya/Desktop/merged_community_area_data - Copy.csv"    
+    file_path = r"main/merged_community_area_data - Copy.csv"    
     if simulator.load_data(file_path):
         if simulator.preprocess_data():
             success, r2, rmse = simulator.train_model()
