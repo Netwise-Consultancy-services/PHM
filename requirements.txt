@@ -7,4 +7,3 @@ folium
 branca
 scikit-learn
 python-docx
-warnings
